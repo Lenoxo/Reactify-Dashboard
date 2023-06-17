@@ -1,5 +1,6 @@
 import Header from '@components/Header';
 import Nav from '@common/Nav';
+import Modal from '@/common/Modal';
 
 export default function MainLayout({ children }) {
   return (
