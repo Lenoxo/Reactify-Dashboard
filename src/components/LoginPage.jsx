@@ -1,8 +1,9 @@
 import { LockClosedIcon } from '@heroicons/react/24/solid';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useAuth } from '@hooks/useAuth';
 
 export default function LoginPage() {
+  const [loginError, setLoginError] = useState(false);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const auth = useAuth();
@@ -17,7 +18,12 @@ export default function LoginPage() {
       .then(() => {
         console.log('Login success');
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error.response.status);
+        if (error.response.status === 401) {
+          setLoginError(true);
+        }
+      });
   }
   return (
     <>
@@ -27,8 +33,12 @@ export default function LoginPage() {
             <img className="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow" />
             <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
           </div>
+          {loginError && (
+            <div className="justify-center z-40 w-full h-auto bg-red-200 rounded-xl">
+              <p className="font-semibold text-red-500 text-center p-2">Your email or password doesn't match, check them and try again.</p>
+            </div>
+          )}
           <form onSubmit={handleSubmit} className="mt-8 space-y-6" action="#" method="POST">
-            <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
                 <label htmlFor="email-address" className="sr-only">
