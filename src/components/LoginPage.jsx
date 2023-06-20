@@ -1,15 +1,23 @@
 import { LockClosedIcon } from '@heroicons/react/24/solid';
 import { useRef } from 'react';
+import { useAuth } from '@hooks/useAuth';
 
 export default function LoginPage() {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
+  const auth = useAuth();
+
   function handleSubmit(event) {
     event.preventDefault();
     const userEmail = emailRef.current.value;
     const userPassword = passwordRef.current.value;
 
-    console.log(userEmail, userPassword);
+    auth
+      .signIn(userEmail, userPassword)
+      .then(() => {
+        console.log('Login success');
+      })
+      .catch((error) => console.log(error));
   }
   return (
     <>
