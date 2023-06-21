@@ -1,14 +1,15 @@
 import useFetch from '@hooks/useFetch';
 import endPoints from '@services/api';
 import { useEffect, useState } from 'react';
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
 const PRODUCT_LIMIT = 0;
 const PRODUCT_OFFSET = 0;
 export default function Dashboard() {
-  const [currentPage, setCurrentPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(0);
   const products = useFetch(endPoints.products.getProducts(PRODUCT_LIMIT, PRODUCT_OFFSET));
-  let currentPageProducts = products.slice(currentPage, currentPage + 10)
-  console.log(currentPageProducts);
+  let currentPageProducts = products.slice(currentPage, currentPage + 10);
+  const isLastPage = currentPage + currentPageProducts?.length === products?.length
+  console.log(products);
 
   return (
     <>
@@ -77,27 +78,28 @@ export default function Dashboard() {
       <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
         <div className="flex flex-1 justify-between">
           <a
-            href="#"
-            className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-            onClick={() => setCurrentPage((currentPage > 1) ? currentPage - 1 : currentPage)}
+            href={currentPage > 1 ? '#' : '#previous'}
+            className={`relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium ${
+              currentPage === 0 ? 'text-gray-400 cursor-not-allowed' : 'text-gray-700 hover:bg-gray-50'
+            }`}
+            onClick={() => setCurrentPage(currentPage > 1 ? currentPage - 10 : currentPage)}
           >
             Previous
           </a>
-          <div>
-            <p className="text-sm text-gray-700">
-              Showing <span className="font-medium">{currentPage}</span> to <span className="font-medium">{currentPage + 9}</span> of{' '}
-              <span className="font-medium">{products?.length}</span> results
+          <div className='flex items-center'>
+            <p className="text-sm text-gray-700 text-center">
+              Showing <span className="font-medium">{currentPage + 1}</span> to <span className="font-medium">{currentPageProducts?.length + currentPage}</span> of <span className="font-medium">{products?.length}</span> products
             </p>
           </div>
           <a
-            href="#"
-            className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-            onClick={() => setCurrentPage(currentPage + 1)}
+            href={(currentPage + currentPageProducts?.length < products?.length) ? '#' : '#Next'}
+            className={`relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium ${
+              (isLastPage) ? 'text-gray-400 cursor-not-allowed' : 'text-gray-700 hover:bg-gray-50'
+            }`}
+            onClick={() => setCurrentPage((currentPage + currentPageProducts?.length < products?.length) ? currentPage + 10 : currentPage)}
           >
             Next
           </a>
-        </div>
-        <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
         </div>
       </div>
     </>
