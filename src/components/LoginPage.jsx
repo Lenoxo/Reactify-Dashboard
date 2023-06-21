@@ -17,6 +17,7 @@ export default function LoginPage() {
       .signIn(userEmail, userPassword)
       .then(() => {
         console.log('Login success');
+        setLoginError(false);
       })
       .catch((error) => {
         console.log(error.response.status);
