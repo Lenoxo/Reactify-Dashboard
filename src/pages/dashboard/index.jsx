@@ -1,18 +1,31 @@
 import useFetch from '@hooks/useFetch';
 import endPoints from '@services/api';
-import { useEffect, useState } from 'react';
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
+import { useState } from 'react';
+import { Chart } from '@common/Chart';
 const PRODUCT_LIMIT = 0;
 const PRODUCT_OFFSET = 0;
 export default function Dashboard() {
   const [currentPage, setCurrentPage] = useState(0);
   const products = useFetch(endPoints.products.getProducts(PRODUCT_LIMIT, PRODUCT_OFFSET));
-  let currentPageProducts = products.slice(currentPage, currentPage + 10);
+  let currentPageProducts = products?.slice(currentPage, currentPage + 10);
   const isLastPage = currentPage + currentPageProducts?.length === products?.length;
-  console.log(products);
+  const categoryNames = products?.map((product) => product.category.name);
+  // Esta función recibe un array como argumento, y usando reduce, va contando las veces que se repite un elemento en el array, y devuelve de return un objeto.
+  const countOcurrences = (arr) => arr.reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {});
+  const data = {
+    datasets: [
+      {
+        label: 'Products with this category',
+        data: countOcurrences(categoryNames),
+        borderWidth: 2,
+        backgroundColor: ['#ffbb11', '#c0c0c0', '#50AF95', '#f3ba2f', '#2a71d0'],
+      },
+    ],
+  };
 
   return (
     <>
+      <Chart className="mb-8 mt-2" chartData={data} />
       <div className="flex flex-col">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
