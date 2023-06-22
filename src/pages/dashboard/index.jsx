@@ -8,7 +8,7 @@ export default function Dashboard() {
   const [currentPage, setCurrentPage] = useState(0);
   const products = useFetch(endPoints.products.getProducts(PRODUCT_LIMIT, PRODUCT_OFFSET));
   let currentPageProducts = products.slice(currentPage, currentPage + 10);
-  const isLastPage = currentPage + currentPageProducts?.length === products?.length
+  const isLastPage = currentPage + currentPageProducts?.length === products?.length;
   console.log(products);
 
   return (
@@ -86,17 +86,18 @@ export default function Dashboard() {
           >
             Previous
           </a>
-          <div className='flex items-center'>
+          <div className="flex items-center">
             <p className="text-sm text-gray-700 text-center">
-              Showing <span className="font-medium">{currentPage + 1}</span> to <span className="font-medium">{currentPageProducts?.length + currentPage}</span> of <span className="font-medium">{products?.length}</span> products
+              Showing <span className="font-medium">{currentPage + 1}</span> to <span className="font-medium">{currentPageProducts?.length + currentPage}</span> of{' '}
+              <span className="font-medium">{products?.length}</span> products
             </p>
           </div>
           <a
-            href={(currentPage + currentPageProducts?.length < products?.length) ? '#' : '#Next'}
+            href={currentPage + currentPageProducts?.length < products?.length ? '#' : '#Next'}
             className={`relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium ${
-              (isLastPage) ? 'text-gray-400 cursor-not-allowed' : 'text-gray-700 hover:bg-gray-50'
+              isLastPage ? 'text-gray-400 cursor-not-allowed' : 'text-gray-700 hover:bg-gray-50'
             }`}
-            onClick={() => setCurrentPage((currentPage + currentPageProducts?.length < products?.length) ? currentPage + 10 : currentPage)}
+            onClick={() => setCurrentPage(currentPage + currentPageProducts?.length < products?.length ? currentPage + 10 : currentPage)}
           >
             Next
           </a>
