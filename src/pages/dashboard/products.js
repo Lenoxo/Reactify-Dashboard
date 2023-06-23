@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { PlusIcon } from '@heroicons/react/20/solid';
+import { XCircleIcon } from '@heroicons/react/24/solid';
 import Modal from '@common/Modal';
 import FormProduct from '@/components/FormProduct';
 import axios from 'axios';
 import endPoints from '@/services/api';
 import Alert from '@common/Alert';
-import useAlert from '@/hooks/useAlert';
+import useAlert from '@hooks/useAlert';
+import { deleteProductById } from '@services/api/products';
 
 export default function Products() {
   const [open, setOpen] = useState(false);
@@ -23,10 +25,30 @@ export default function Products() {
       console.log(error);
     }
   }, [alert]);
+
+  const handleProductDelete = (id) => {
+    deleteProductById(id)
+      .then(() => {
+        setAlert({
+          active: true,
+          message: 'Delete product successfully',
+          type: 'success',
+          autoClose: true,
+        });
+      })
+      .catch((error) => {
+        setAlert({
+          active: true,
+          message: error.message,
+          type: 'error',
+          autoClose: false,
+        });
+      });
+  };
   return (
     <>
-      {/* Page headings de TailwindUI */}
       <Alert alert={alert} handleClose={toggleAlert} />
+      {/* Page headings de TailwindUI */}
       <div className="lg:flex lg:items-center lg:justify-between mb-8">
         <div className="flex-1 min-w-0">
           <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">List of Products</h2>
@@ -98,9 +120,7 @@ export default function Products() {
                         </a>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <a href="/edit" className="text-indigo-600 hover:text-indigo-900">
-                          Delete
-                        </a>
+                        <XCircleIcon className="flex-shrink-0 w-6-h-6 bg-gray-400" onClick={handleProductDelete(product.id)} />
                       </td>
                     </tr>
                   ))}

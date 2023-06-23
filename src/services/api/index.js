@@ -13,7 +13,7 @@ const endPoints = {
     postProducts: `${API}/${VERSION}/products`,
     getProductById: (id) => `${API}/${VERSION}/products/${id}`,
     putProductById: (id) => `${API}/${VERSION}/products/${id}`,
-    deleteProductById: (id) => `${API}/${VERSION}/products/${id}`,
+    deleteProduct: (id) => `${API}/${VERSION}/products/${id}`,
   },
   users: {
     getUsers: (limit) => `${API}/${VERSION}/users?limit=${limit}`,
