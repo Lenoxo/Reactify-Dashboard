@@ -120,7 +120,7 @@ export default function Products() {
                         </a>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <XCircleIcon className="flex-shrink-0 w-6-h-6 bg-gray-400" onClick={handleProductDelete(product.id)} />
+                        <XCircleIcon className="flex-shrink-0 w-6 h-6 fill-gray-400" onClick={() => handleProductDelete(product.id)} />
                       </td>
                     </tr>
                   ))}
