@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { addProducts } from '@services/api/products';
-export default function FormProduct() {
+export default function FormProduct({ setOpen, setAlert }) {
   const formRef = useRef(null);
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -14,9 +14,24 @@ export default function FormProduct() {
       images: ['https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'],
     };
     console.log(newProductData);
-    addProducts(newProductData).then((response) => {
-      console.log(response.data);
-    });
+    addProducts(newProductData)
+      .then(() => {
+        setAlert({
+          active: true,
+          message: 'Product added successfully',
+          type: 'success',
+          autoClose: true,
+        });
+        setOpen(false);
+      })
+      .catch((error) => {
+        setAlert({
+          active: true,
+          message: error.message,
+          type: 'error',
+          autoClose: false,
+        });
+      });
   };
   return (
     <form ref={formRef} onSubmit={handleSubmit}>
