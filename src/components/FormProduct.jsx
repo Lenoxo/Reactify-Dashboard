@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-
+import { addProducts } from '@services/api/products';
 export default function FormProduct() {
   const formRef = useRef(null);
   const handleSubmit = (event) => {
@@ -10,9 +10,13 @@ export default function FormProduct() {
       price: parseInt(formData.get('price')),
       description: formData.get('description'),
       categoryId: parseInt(formData.get('category')),
-      images: [formData.get('images').name],
+      // Por el momento tengo que dejar así la imagen, ya que se pide si o si una url de una imagen, dentro de un array, para ser recibido en la API.
+      images: ['https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'],
     };
-    console.log(newProductData)
+    console.log(newProductData);
+    addProducts(newProductData).then((response) => {
+      console.log(response.data);
+    });
   };
   return (
     <form ref={formRef} onSubmit={handleSubmit}>

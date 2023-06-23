@@ -3,13 +3,8 @@ import { PlusIcon } from '@heroicons/react/20/solid';
 import Modal from '@common/Modal';
 import FormProduct from '@/components/FormProduct';
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
-
 export default function Products() {
-  const [products, setProducts] = useState([]);
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
   return (
     <>
