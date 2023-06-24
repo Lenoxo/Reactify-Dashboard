@@ -26,7 +26,7 @@ export default function Dashboard() {
   return (
     <>
       <Chart className="mb-8 mt-2" chartData={data} />
-      <div className="flex flex-col">
+      <div id="product-container" className="flex flex-col">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -91,7 +91,7 @@ export default function Dashboard() {
       <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
         <div className="flex flex-1 justify-between">
           <a
-            href={currentPage > 1 ? '#' : '#previous'}
+            href={currentPage > 1 ? '#product-container' : '#previous'}
             className={`relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium ${
               currentPage === 0 ? 'text-gray-400 cursor-not-allowed' : 'text-gray-700 hover:bg-gray-50'
             }`}
@@ -106,7 +106,7 @@ export default function Dashboard() {
             </p>
           </div>
           <a
-            href={currentPage + currentPageProducts?.length < products?.length ? '#' : '#Next'}
+            href={currentPage + currentPageProducts?.length < products?.length ? '#product-container' : '#Next'}
             className={`relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium ${
               isLastPage ? 'text-gray-400 cursor-not-allowed' : 'text-gray-700 hover:bg-gray-50'
             }`}

@@ -1,6 +1,8 @@
 import { useRef } from 'react';
-import { addProducts } from '@services/api/products';
+import { addProducts, updateProducts } from '@services/api/products';
+import { useRouter } from 'next/router';
 export default function FormProduct({ setOpen, setAlert, product }) {
+  const router = useRouter()
   const productData = product;
   const formRef = useRef(null);
   const handleSubmit = (event) => {
@@ -14,25 +16,37 @@ export default function FormProduct({ setOpen, setAlert, product }) {
       // Por el momento tengo que dejar así la imagen, ya que se pide si o si una url de una imagen, dentro de un array, para ser recibido en la API.
       images: ['https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'],
     };
-    console.log(newProductData);
-    addProducts(newProductData)
-      .then(() => {
-        setAlert({
-          active: true,
-          message: 'Product added successfully',
-          type: 'success',
-          autoClose: true,
-        });
-        setOpen(false);
+    if (productData) {
+      updateProducts(productData.id, newProductData).then((response) => {
+        router.push('/dashboard/products')
+        alert('Your product has been updated.')
+        
+      }).catch((error) => {
+        alert('Something went wrong...')
+        console.log(error)
       })
-      .catch((error) => {
-        setAlert({
-          active: true,
-          message: error.message,
-          type: 'error',
-          autoClose: false,
+    } else {
+      addProducts(newProductData)
+        .then(() => {
+          setAlert({
+            active: true,
+            message: 'Product added successfully',
+            type: 'success',
+            autoClose: true,
+          });
+          setOpen(false);
+        })
+        .catch((error) => {
+          console.log(setAlert);
+          setAlert({
+            active: true,
+            message: error.message,
+            type: 'error',
+            autoClose: false,
+          });
+          setOpen(false);
         });
-      });
+    }
   };
   return (
     <form ref={formRef} onSubmit={handleSubmit}>

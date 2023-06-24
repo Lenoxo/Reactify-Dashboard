@@ -12,9 +12,20 @@ const addProducts = async (body) => {
   return response.data;
 };
 
+const updateProducts = async (id, body) => {
+  const config = {
+    headers: {
+      accept: '*/*',
+      'content-Type': 'application/json',
+    },
+  };
+  const response = await axios.put(endPoints.products.putProductById(id), body, config);
+  return response.data;
+};
+
 const deleteProductById = async (id) => {
   const response = await axios.delete(endPoints.products.deleteProduct(id));
   return response.data;
 };
 
-export { addProducts, deleteProductById };
+export { addProducts, deleteProductById, updateProducts };
