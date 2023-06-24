@@ -2,6 +2,7 @@ import { LockClosedIcon, UserCircleIcon } from '@heroicons/react/24/solid';
 import { useRef, useState } from 'react';
 import { useAuth } from '@hooks/useAuth';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 export default function LoginPage() {
   const [loginError, setLoginError] = useState(false);
@@ -37,7 +38,7 @@ export default function LoginPage() {
           </div>
           {loginError && (
             <div className="justify-center z-40 w-full h-auto bg-red-200 rounded-xl">
-              <p className="font-semibold text-red-500 text-center p-2">Your email or password doesn't match, check them and try again.</p>
+              <p className="font-semibold text-red-500 text-center p-2">Your email or password does&apos;nt match, check them and try again.</p>
             </div>
           )}
           <form onSubmit={handleSubmit} className="mt-8 space-y-6" action="#" method="POST">
@@ -83,9 +84,9 @@ export default function LoginPage() {
               </div>
 
               <div className="text-sm">
-                <a href="#" className="font-medium text-blue-600 hover:text-blue-500">
+                <Link href="/login" clLinkssName="font-medium text-blue-600 hover:text-blue-500">
                   Forgot your password?
-                </a>
+                </Link>
               </div>
             </div>
 

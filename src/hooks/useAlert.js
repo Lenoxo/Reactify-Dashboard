@@ -24,4 +24,4 @@ const useAlert = (options) => {
   };
 };
 
-export default useAlert;    
+export default useAlert;
