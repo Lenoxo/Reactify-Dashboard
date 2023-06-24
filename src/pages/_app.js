@@ -1,6 +1,6 @@
 import MainLayout from '@layout/MainLayout';
 import '@/styles/globals.css';
-import { ProviderAuth } from '@hooks/useAuth';
+import { ProviderAuth, useAuth } from '@hooks/useAuth';
 export default function App({ Component, pageProps }) {
   return (
     <>
