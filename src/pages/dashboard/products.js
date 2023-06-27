@@ -52,9 +52,9 @@ export default function Products() {
       {/* Page headings de TailwindUI */}
       <div className="lg:flex lg:items-center lg:justify-between mb-8">
         <div className="flex-1 min-w-0">
-          <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">List of Products</h2>
+          <h2 className="text-2xl px-6 font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">List of Products</h2>
         </div>
-        <div className="mt-5 flex lg:mt-0 lg:ml-4">
+        <div className="mt-5 flex px-6 lg:mt-0 lg:ml-4">
           <span className="sm:ml-3">
             <button
               type="button"
