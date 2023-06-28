@@ -3,7 +3,6 @@ import { useAuth } from '@hooks/useAuth';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
