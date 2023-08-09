@@ -9,16 +9,19 @@ import Alert from '@common/Alert';
 import useAlert from '@hooks/useAlert';
 import { deleteProductById } from '@services/api/products';
 import Link from 'next/link';
+import SearchBar from '@/common/SearchBar';
 
 export default function Products() {
   const [open, setOpen] = useState(false);
   const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const { alert, setAlert, toggleAlert } = useAlert();
 
   useEffect(() => {
     async function getProducts() {
       const response = await axios.get(endPoints.products.getAllProducts);
       setProducts(response.data);
+      setFilteredProducts(response.data);
     }
     try {
       getProducts();
@@ -26,6 +29,15 @@ export default function Products() {
       console.log(error);
     }
   }, [alert]);
+
+  const handleSearch = (text) => {
+    const matchingProducts = products.filter((product) => {
+      const productTitle = product.title.toLowerCase();
+      const preparedText = text.toLowerCase();
+      return productTitle.includes(preparedText);
+    });
+    setFilteredProducts(matchingProducts); // Actualiza el estado de los productos filtrados
+  };
 
   const handleProductDelete = (id) => {
     deleteProductById(id)
@@ -52,9 +64,9 @@ export default function Products() {
       {/* Page headings de TailwindUI */}
       <div className="lg:flex lg:items-center lg:justify-between mb-8">
         <div className="flex-1 min-w-0">
-          <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">List of Products</h2>
+          <h2 className="text-2xl px-6 font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">List of Products</h2>
         </div>
-        <div className="mt-5 flex lg:mt-0 lg:ml-4">
+        <div className="mt-5 flex px-6 lg:mt-0 lg:ml-4">
           <span className="sm:ml-3">
             <button
               type="button"
@@ -68,6 +80,7 @@ export default function Products() {
         </div>
       </div>
 
+      <SearchBar handleSearch={handleSearch} />
       <div className="flex flex-col">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -96,7 +109,7 @@ export default function Products() {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {products?.map((product) => (
+                  {filteredProducts?.map((product) => (
                     <tr key={`Product-item-${product.id}`}>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
