@@ -1,38 +1,72 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Reactify Dashboard
 
-## Getting Started
+Reactify Dashboard is the administrative interface of an e-commerce project called [Reactify](#useful-resources). This dashboard is developed using React, Next.js, and TailwindCSS, and it incorporates the following key functionalities:
 
-First, run the development server:
+1. **Category Visualization using Chart.js:** Gain insights into product categories' distribution through intuitive charts powered by Chart.js.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+2. **Pagination for Enhanced Data Management:** Efficiently manage large datasets with a built-in pagination system that displays 10 results per page.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. **Product Management (Create, Edit, Delete):** Seamlessly interact with the API to create, edit, and delete products within the `/products` page.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+4. **Login Authentication with Token Handling:** Securely authenticate users through js-cookie and axios, ensuring smooth token management for API communication.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Table of Contents:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- [Demo](#demo)
+- [Features](#features)
+- [Installation](#installation)
+- [Useful Resources](#useful-resources)
+- [License](#license)
+- [Author](#author)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Demo
 
-## Learn More
+![Reactify Dashboard Demo](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeW9uMHJleHRsOWFxbnhkcXlhbzd2eGVocWlnMXc0MjV2bXFmZzA2aSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dpRoqML3gym7EV3ZNF/giphy.gif)
 
-To learn more about Next.js, take a look at the following resources:
+#### Before using it
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To access the Dashboard, please log in with the following test account:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Email**: `maria@mail.com`
+- **Password**: `12345`
 
-## Deploy on Vercel
+#### [View it online!](https://react-ecommerce-dashboard.vercel.app/)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Features
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. **Category Visualization using Chart.js:** The dashboard provides a clear visualization of product categories using Chart.js. This feature enhances the understanding of the distribution of products across various categories.
+
+2. **Pagination for Enhanced Data Management:** To optimize the user experience, the dashboard features a pagination system that allows viewing only 10 results per page. This ensures efficient data management and navigation.
+
+3. **Product Management (Create, Edit, Delete):** The dashboard empowers administrators with the ability to create, edit, and delete products through interactions with the API. These operations are seamlessly executed within the `/products` page.
+
+4. **Login Authentication with Token Handling:** Leveraging js-cookie and axios, the dashboard incorporates a secure login authentication mechanism. User tokens are managed efficiently, enabling smooth communication between the dashboard and the backend API.
+
+### Installation
+
+To set up and run Reactify Dashboard locally, follow these steps:
+
+1. Clone the repository: `git clone [repository URL]`
+2. Navigate to the dashboard directory: `cd Reactify-Dashboard`
+3. Install the required dependencies: `npm install`
+4. Start the development server: `npm run dev`
+5. Open your web browser and go to `http://localhost:3000` to access the Reactify Dashboard.
+
+### Useful Resources
+
+- **[Reactify](https://github.com/Lenoxo/reactify-nextjs)**: E-commerce Project mentioned above.
+- **[Official React Documentation](https://reactjs.org/)**: Comprehensive resource for mastering React and its ecosystem.
+- **[Next.js Documentation](https://nextjs.org/)**: Official documentation for Next.js, offering guidance on building server-rendered React applications.
+- **[TailwindCSS Documentation](https://tailwindcss.com/)**: In-depth guide to TailwindCSS, a utility-first CSS framework.
+- **[Chart.js Documentation](https://www.chartjs.org/)**: Documentation for Chart.js, a widely-used JavaScript charting library.
+- **[Next.js Professional Course](https://platzi.com/cursos/profesional-nextjs/)**: Course where I learned how to develop this project and later on, gave it my style and improvements.
+
+### License
+
+This project is licensed under the [MIT License](LICENSE).
+
+### Author
+
+Lenoxo (Emanuel Padilla)
+
+For inquiries, suggestions, or comments, feel free to reach out at [emanuehl159@gmail.com](mailto:emanuehl159@gmail.com).
