@@ -1,14 +1,16 @@
 # Reactify Dashboard
 
-Reactify Dashboard is the administrative interface of an e-commerce project called [Reactify](#useful-resources). This dashboard is developed using React, Next.js, and TailwindCSS, and it incorporates the following key functionalities:
+Reactify Dashboard is the administrative interface of an e-commerce project called **[Reactify](#useful-resources)**. This dashboard is developed using React, Next.js, and TailwindCSS, and it incorporates the following key functionalities:
+
+1. **Platzi Fake Store API Integration:** The website utilizes the [Platzi Fake Store API](#useful-resources) to fetch product data.
 
 1. **Category Visualization using Chart.js:** Gain insights into product categories' distribution through intuitive charts powered by Chart.js.
 
-2. **Pagination for Enhanced Data Management:** Efficiently manage large datasets with a built-in pagination system that displays 10 results per page.
+1. **Pagination for Enhanced Data Management:** Efficiently manage large datasets with a built-in pagination system that displays 10 results per page.
 
-3. **Product Management (Create, Edit, Delete):** Seamlessly interact with the API to create, edit, and delete products within the `/products` page.
+1. **Product Management (Create, Edit, Delete):** Seamlessly interact with the API to create, edit, and delete products within the `/products` page.
 
-4. **Login Authentication with Token Handling:** Securely authenticate users through js-cookie and axios, ensuring smooth token management for API communication.
+1. **Login Authentication with Token Handling:** Securely authenticate users through js-cookie and axios, ensuring smooth token management for API communication.
 
 ## Table of Contents:
 
@@ -34,13 +36,15 @@ To access the Dashboard, please log in with the following test account:
 
 ### Features
 
+1. **Platzi Fake Store API Integration:** The website utilizes the [Platzi Fake Store API](#useful-resources) to fetch product data. And because it's a test API, has some details to consider, one of them is that generates random images for products, instead of having own images for each product.
+
 1. **Category Visualization using Chart.js:** The dashboard provides a clear visualization of product categories using Chart.js. This feature enhances the understanding of the distribution of products across various categories.
 
-2. **Pagination for Enhanced Data Management:** To optimize the user experience, the dashboard features a pagination system that allows viewing only 10 results per page. This ensures efficient data management and navigation.
+1. **Pagination for Enhanced Data Management:** To optimize the user experience, the dashboard features a pagination system that allows viewing only 10 results per page. This ensures efficient data management and navigation.
 
-3. **Product Management (Create, Edit, Delete):** The dashboard empowers administrators with the ability to create, edit, and delete products through interactions with the API. These operations are seamlessly executed within the `/products` page.
+1. **Product Management (Create, Edit, Delete):** The dashboard empowers administrators with the ability to create, edit, and delete products through interactions with the API. These operations are seamlessly executed within the `/products` page.
 
-4. **Login Authentication with Token Handling:** Leveraging js-cookie and axios, the dashboard incorporates a secure login authentication mechanism. User tokens are managed efficiently, enabling smooth communication between the dashboard and the backend API.
+1. **Login Authentication with Token Handling:** Leveraging js-cookie and axios, the dashboard incorporates a secure login authentication mechanism. User tokens are managed efficiently, enabling smooth communication between the dashboard and the backend API.
 
 ### Installation
 
@@ -54,6 +58,7 @@ To set up and run Reactify Dashboard locally, follow these steps:
 
 ### Useful Resources
 
+- **[Platzi Fake Store API](https://fakeapi.platzi.com/)**: Official Page of this API.
 - **[Reactify](https://github.com/Lenoxo/reactify-nextjs)**: E-commerce Project mentioned above.
 - **[Official React Documentation](https://reactjs.org/)**: Comprehensive resource for mastering React and its ecosystem.
 - **[Next.js Documentation](https://nextjs.org/)**: Official documentation for Next.js, offering guidance on building server-rendered React applications.
