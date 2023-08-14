@@ -2,9 +2,10 @@ import { LockClosedIcon, UserCircleIcon } from '@heroicons/react/24/solid';
 import { useRef, useState } from 'react';
 import { useAuth } from '@hooks/useAuth';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
+import Modal from '@/common/Modal';
 
 export default function LoginPage() {
+  const [open, setOpen] = useState(false);
   const [loginError, setLoginError] = useState(false);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
@@ -84,9 +85,9 @@ export default function LoginPage() {
               </div>
 
               <div className="text-sm">
-                <Link href="/login" className="font-medium text-blue-600 hover:text-blue-500">
+                <button type="button" className="font-medium text-blue-600 hover:text-blue-500" onClick={() => setOpen(!open)}>
                   Forgot your password?
-                </Link>
+                </button>
               </div>
             </div>
 
@@ -104,6 +105,21 @@ export default function LoginPage() {
           </form>
         </div>
       </div>
+      <Modal open={open} setOpen={setOpen}>
+        <div className="flex flex-col items-center justify-center text-md gap-4">
+          <p>
+            <strong>Just for now</strong>, because it is a test app, you can use a test email and password:
+          </p>
+          <div>
+            <span className="font-semibold">Email: </span>
+            <code className="rounded-lg border border-zinc-300 p-1">maria@mail.com</code>
+          </div>
+          <div>
+            <span className="font-semibold">Password: </span>
+            <code className="rounded-lg border border-zinc-300 p-1">12345</code>
+          </div>
+        </div>
+      </Modal>
     </>
   );
 }
