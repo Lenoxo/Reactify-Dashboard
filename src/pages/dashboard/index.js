@@ -25,7 +25,8 @@ export default function Dashboard() {
 
   return (
     <>
-      <Chart className="mb-8 mt-2" chartData={data} />
+      <h3 className="text-lg font-semibold text-center">Categories</h3>
+      <Chart chartData={data} />
       <div id="product-container" className="flex flex-col">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">

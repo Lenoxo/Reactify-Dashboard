@@ -6,20 +6,22 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 export const Chart = ({ chartData }) => {
   return (
     <>
-      <Bar
-        data={chartData}
-        options={{
-          title: {
-            display: true,
-            text: 'Category',
-            fontSize: 20,
-          },
-          legend: {
-            display: true,
-            position: 'right',
-          },
-        }}
-      />
+      <div className="max-h-[70vh] flex justify-center mb-2">
+        <Bar
+          data={chartData}
+          options={{
+            title: {
+              display: true,
+              text: 'Category',
+              fontSize: 20,
+            },
+            legend: {
+              display: true,
+              position: 'right',
+            },
+          }}
+        />
+      </div>
     </>
   );
 };
