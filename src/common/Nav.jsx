@@ -5,9 +5,9 @@ export default function NavRoute() {
   const route = router.pathname.substring(1);
   function message(route) {
     if (route === '') {
-      return `You're at Home`;
+      return `Home`;
     } else {
-      return `You're at ${route}`;
+      return `${route}`;
     }
   }
 
