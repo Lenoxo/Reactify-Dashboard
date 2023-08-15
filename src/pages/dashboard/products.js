@@ -62,12 +62,12 @@ export default function Products() {
     <>
       <Alert alert={alert} handleClose={toggleAlert} />
       {/* Page headings de TailwindUI */}
-      <div className="lg:flex lg:items-center lg:justify-between mb-8">
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-2 gap-2">
         <div className="flex-1 min-w-0">
           <h2 className="text-2xl px-6 font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">List of Products</h2>
         </div>
-        <div className="mt-5 flex px-6 lg:mt-0 lg:ml-4">
-          <span className="sm:ml-3">
+        <div className="flex px-6">
+          <span>
             <button
               type="button"
               className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
