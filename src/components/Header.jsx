@@ -1,9 +1,10 @@
 import { Fragment } from 'react';
 import { useAuth } from '@hooks/useAuth';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
-import Link from 'next/link';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { DashboardIcon } from '@/common/DashboardIcon';
+import Link from 'next/link';
+import Image from 'next/image';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -58,14 +59,16 @@ export default function Header() {
                   <div>
                     <Menu.Button className="flex rounded-full bg-zinc-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="sr-only">Open user menu</span>
-                      <img
-                        className="h-8 w-8 rounded-full"
+                      <Image
+                        width={32}
+                        height={32}
+                        className="rounded-full"
                         src={
                           userData.avatar
                             ? userData.avatar
                             : 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
                         }
-                        alt=""
+                        alt="avatar"
                       />
                     </Menu.Button>
                   </div>

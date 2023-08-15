@@ -1,4 +1,5 @@
 import { useAuth } from '@/hooks/useAuth';
+import Image from 'next/image';
 
 export default function Profile() {
   const auth = useAuth();
@@ -6,8 +7,10 @@ export default function Profile() {
     <>
       <section className="flex flex-col items-center">
         <div className="group/items flex flex-col w-full max-w-md px-4 h-90 justify-around cursor-default">
-          <figure className="flex flex-col items-center">
-            <img className="h-20 w-20 rounded-full ring-2 ring-zinc-500" src={`${auth?.user?.avatar}`} alt={`${auth?.user?.name}`} />
+          <figure className="flex justify-center">
+            <div className="relative h-20 w-20">
+              <Image fill={true} className="object-cover rounded-full ring-2 ring-zinc-500" src={`${auth?.user?.avatar}`} alt={`${auth?.user?.name}`} />
+            </div>
           </figure>
           <p className="text-md font-semibold mt-2 pl-2">Role</p>
           <p className="border-2 rounded-md px-2 py-1">{auth?.user?.role}</p>

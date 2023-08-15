@@ -10,6 +10,7 @@ import useAlert from '@hooks/useAlert';
 import { deleteProductById } from '@services/api/products';
 import Link from 'next/link';
 import SearchBar from '@/common/SearchBar';
+import Image from 'next/image';
 
 export default function Products() {
   const [open, setOpen] = useState(false);
@@ -113,8 +114,8 @@ export default function Products() {
                     <tr key={`Product-item-${product.id}`}>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
-                          <div className="flex-shrink-0 h-10 w-10">
-                            <img className="h-10 w-10 rounded-full" src={product.images[0]} alt="" />
+                          <div className="flex-shrink-0 relative h-10 w-10">
+                            <Image fill={true} className="object-cover rounded-full" src={product.images[0]} alt="" />
                           </div>
                           <div className="ml-4">
                             <div className="text-sm font-medium text-gray-900">{product.title}</div>
