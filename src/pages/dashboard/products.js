@@ -61,7 +61,7 @@ export default function Products() {
   };
 
   const handleWrongImageUrl = (url) => {
-    let cleanedValue = url.replace(/[\[\]"]/g, '');
+    let cleanedValue = url.replace(/[[\]"]/g, '');
     return cleanedValue;
   };
   return (
