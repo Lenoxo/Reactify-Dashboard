@@ -57,8 +57,9 @@ To set up and run Reactify Dashboard locally, follow these steps:
 1. Clone the repository: `git clone [repository URL]`
 2. Navigate to the dashboard directory: `cd Reactify-Dashboard`
 3. Install the required dependencies: `npm install`
-4. Start the development server: `npm run dev`
-5. Open your web browser and go to `http://localhost:3000` to access the Reactify Dashboard.
+4. Declare the env variables in `.env` file in the same level as this README.md, follow / copy the example in `.env-example` file
+5. Start the development server: `npm run dev`
+6. Open your web browser and go to `http://localhost:3000` to access the Reactify Dashboard.
 
 ### Useful Resources
 
