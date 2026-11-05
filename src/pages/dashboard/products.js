@@ -45,7 +45,7 @@ export default function Products() {
       .then(() => {
         setAlert({
           active: true,
-          message: 'Delete product successfully',
+          message: 'Product deleted successfully',
           type: 'success',
           autoClose: true,
         });
@@ -117,7 +117,7 @@ export default function Products() {
                 <tbody className="bg-white divide-y divide-gray-200">
                   {filteredProducts?.map((product) => (
                     <tr key={`Product-item-${product.id}`}>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-6 py-4">
                         <div className="flex items-center">
                           <div className="flex-shrink-0 relative h-10 w-10">
                             <Image fill={true} className="object-cover rounded-full" src={handleWrongImageUrl(product.images[0])} alt="img" />
@@ -127,19 +127,19 @@ export default function Products() {
                           </div>
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-6 py-4">
                         <div className="text-sm text-gray-900">{product.category.name}</div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-6 py-4">
                         <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">${product.price}</span>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{product.id}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                      <td className="px-6 py-4 text-sm text-gray-500">{product.id}</td>
+                      <td className="px-6 py-4 text-right text-sm font-medium">
                         <Link href={`/dashboard/edit/${product.id}`} className="text-blue-600 hover:text-blue-900">
                           Edit
                         </Link>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                      <td className="px-6 py-4 text-right text-sm font-medium">
                         <XCircleIcon className="flex-shrink-0 w-6 h-6 fill-gray-400" onClick={() => handleProductDelete(product.id)} />
                       </td>
                     </tr>

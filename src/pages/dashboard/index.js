@@ -60,7 +60,7 @@ export default function Dashboard() {
                 <tbody className="bg-white divide-y divide-gray-200">
                   {currentPageProducts?.map((product) => (
                     <tr key={`Product-item-${product.id}`}>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-6 py-4">
                         <div className="flex items-center">
                           <div className="flex-shrink-0 relative h-10 w-10">
                             <Image fill={true} className="rounded-full object-cover" src={handleWrongImageUrl(product.images[0])} alt="" />
@@ -70,13 +70,13 @@ export default function Dashboard() {
                           </div>
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-6 py-4">
                         <div className="text-sm text-gray-900">{product.category.name}</div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-6 py-4">
                         <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">${product.price}</span>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{product.id}</td>
+                      <td className="px-6 py-4 text-sm text-gray-500">{product.id}</td>
                     </tr>
                   ))}
                 </tbody>
