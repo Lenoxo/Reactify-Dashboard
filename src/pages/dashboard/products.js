@@ -45,7 +45,7 @@ export default function Products() {
       .then(() => {
         setAlert({
           active: true,
-          message: 'Delete product successfully',
+          message: 'Product deleted successfully',
           type: 'success',
           autoClose: true,
         });
