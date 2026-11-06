@@ -1,10 +1,13 @@
 import useFetch from '@hooks/useFetch';
 import endPoints from '@services/api';
-import { useState } from 'react';
+import { useAuth } from '@/hooks/useAuth';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import { Chart } from '@common/Chart';
 import Image from 'next/image';
 const PRODUCT_LIMIT = 0;
 const PRODUCT_OFFSET = 0;
+
 export default function Dashboard() {
   const [currentPage, setCurrentPage] = useState(0);
   const products = useFetch(endPoints.products.getProducts(PRODUCT_LIMIT, PRODUCT_OFFSET));
@@ -28,6 +31,16 @@ export default function Dashboard() {
     let cleanedValue = url.replace(/[[\]"]/g, '');
     return cleanedValue;
   };
+
+  const { auth } = useAuth();
+  const router = useRouter();
+
+  // Effect to redirect to login page if the user is not logged in
+  useEffect(() => {
+    if (router.isReady && auth === undefined) {
+      router.replace('/login');
+    }
+  }, [router.isReady]);
 
   return (
     <>
