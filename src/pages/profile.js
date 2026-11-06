@@ -14,6 +14,10 @@ export default function Profile() {
     }
   }, [router.isReady]);
 
+  if (!auth) {
+    return;
+  }
+
   return (
     <>
       <section className="flex flex-col items-center">

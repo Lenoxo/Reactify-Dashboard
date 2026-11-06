@@ -42,6 +42,12 @@ export default function Dashboard() {
     }
   }, [router.isReady]);
 
+  // This prevents rendering UI components if the user is not authenticated
+
+  if (!auth) {
+    return;
+  }
+
   return (
     <>
       <h3 className="text-lg font-semibold text-center">Categories</h3>

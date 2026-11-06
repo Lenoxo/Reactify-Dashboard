@@ -23,5 +23,12 @@ export default function Edit() {
     const { id } = router.query;
     getProduct(id);
   }, [router.isReady]);
+
+  // This prevents rendering UI components if the user is not authenticated
+
+  if (!auth) {
+    return;
+  }
+
   return <FormProduct product={product} />;
 }

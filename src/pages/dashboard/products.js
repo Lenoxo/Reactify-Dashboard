@@ -72,6 +72,13 @@ export default function Products() {
     let cleanedValue = url.replace(/[[\]"]/g, '');
     return cleanedValue;
   };
+
+  // This prevents rendering UI components if the user is not authenticated
+
+  if (!auth) {
+    return;
+  }
+
   return (
     <>
       <Alert alert={alert} handleClose={toggleAlert} />
