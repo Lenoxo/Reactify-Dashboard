@@ -9,7 +9,7 @@ export default function Profile() {
 
   // Effect to redirect to login page if the user is not logged in
   useEffect(() => {
-    if (router.isReady && auth === undefined) {
+    if (router.isReady && !auth) {
       router.replace('/login');
     }
   }, [router.isReady]);

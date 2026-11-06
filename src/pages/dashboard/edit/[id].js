@@ -12,7 +12,7 @@ export default function Edit() {
 
   useEffect(() => {
     if (!router.isReady) return;
-    if (router.isReady && auth === undefined) {
+    if (router.isReady && !auth) {
       router.replace('/login');
     }
 

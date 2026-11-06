@@ -23,7 +23,7 @@ export default function Products() {
   const router = useRouter();
 
   useEffect(() => {
-    if (router.isReady && auth === undefined) {
+    if (router.isReady && !auth) {
       router.replace('/login');
     }
 
