@@ -23,11 +23,12 @@ export default function Products() {
   const router = useRouter();
 
   useEffect(() => {
-    if (router.isReady && !auth) {
-      router.replace('/login');
-    }
-
     async function getProducts() {
+      if (router.isReady && !auth.user) {
+        router.replace('/login');
+        return;
+      }
+
       const response = await axios.get(endPoints.products.getAllProducts);
       setProducts(response.data);
       setFilteredProducts(response.data);
@@ -38,6 +39,11 @@ export default function Products() {
       console.log(error);
     }
   }, [alert, router.isReady]);
+
+  // This prevents rendering UI components if the user is not authenticated
+  if (!auth.user) {
+    return;
+  }
 
   const handleSearch = (text) => {
     const matchingProducts = products.filter((product) => {
@@ -72,12 +78,6 @@ export default function Products() {
     let cleanedValue = url.replace(/[[\]"]/g, '');
     return cleanedValue;
   };
-
-  // This prevents rendering UI components if the user is not authenticated
-
-  if (!auth) {
-    return;
-  }
 
   return (
     <>
