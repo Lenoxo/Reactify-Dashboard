@@ -11,15 +11,24 @@ import { deleteProductById } from '@services/api/products';
 import Link from 'next/link';
 import SearchBar from '@/common/SearchBar';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { useAuth } from '@/hooks/useAuth';
 
 export default function Products() {
   const [open, setOpen] = useState(false);
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const { alert, setAlert, toggleAlert } = useAlert();
+  const auth = useAuth();
+  const router = useRouter();
 
   useEffect(() => {
     async function getProducts() {
+      if (router.isReady && !auth.user) {
+        router.replace('/login');
+        return;
+      }
+
       const response = await axios.get(endPoints.products.getAllProducts);
       setProducts(response.data);
       setFilteredProducts(response.data);
@@ -29,7 +38,12 @@ export default function Products() {
     } catch (error) {
       console.log(error);
     }
-  }, [alert]);
+  }, [alert, router.isReady]);
+
+  // This prevents rendering UI components if the user is not authenticated
+  if (!auth.user) {
+    return;
+  }
 
   const handleSearch = (text) => {
     const matchingProducts = products.filter((product) => {
@@ -64,6 +78,7 @@ export default function Products() {
     let cleanedValue = url.replace(/[[\]"]/g, '');
     return cleanedValue;
   };
+
   return (
     <>
       <Alert alert={alert} handleClose={toggleAlert} />
